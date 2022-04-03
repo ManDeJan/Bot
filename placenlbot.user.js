@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         PlaceNL Bot
-// @namespace    https://github.com/PlaceNL/Bot
+// @name         PlaceNL Bot Maar dan die van Jan :)
+// @namespace    https://github.com/ManDeJan/Bot
 // @version      20
 // @description  De bot voor PlaceNL!
 // @author       NoahvdAa
@@ -9,8 +9,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
-// @updateURL    https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js
-// @downloadURL  https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js
+// @updateURL    https://github.com/ManDeJan/Bot/raw/master/placenlbot.user.js
+// @downloadURL  https://github.com/ManDeJan/Bot/raw/master/placenlbot.user.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -120,7 +120,7 @@ function connectSocket() {
         duration: DEFAULT_TOAST_DURATION_MS
     }).showToast();
 
-    socket = new WebSocket('wss://placenl.noahvdaa.me/api/ws');
+    socket = new WebSocket('wss://mandejan.nl:3987/api/ws');
 
     socket.onopen = function () {
         Toastify({
@@ -145,7 +145,7 @@ function connectSocket() {
                     text: `Nieuwe map laden (reden: ${data.reason ? data.reason : 'verbonden met server'})...`,
                     duration: DEFAULT_TOAST_DURATION_MS
                 }).showToast();
-                currentOrderCtx = await getCanvasFromUrl(`https://placenl.noahvdaa.me/maps/${data.data}`, currentOrderCanvas, 0, 0, true);
+                currentOrderCtx = await getCanvasFromUrl(`http://mandejan.nl:3987/maps/${data.data}`, currentOrderCanvas, 0, 0, true);
                 order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
                 Toastify({
                     text: `Nieuwe map geladen, ${order.length} pixels in totaal`,
